@@ -1,3 +1,4 @@
+// Number of Nonnegative Integer Solutions to ax+by <= c
 #include<bits/stdc++.h>
 using namespace std;
 

@@ -1,3 +1,4 @@
+// Smallest Nonnegative Integer x s.t. l <= ax % p <= r
 #include<bits/stdc++.h>
 using namespace std;
 
