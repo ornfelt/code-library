@@ -103,10 +103,10 @@ struct line {
 		}
 		return {p, q};
     	}
-    //ax + by + c = 0
+    // ax + by + c = 0
     array<double, 3> get_abc() {
         double a = -v.y, b = v.x;
-        return {a, b, c};
+        return {a, b, -c};
     }
     // 1 if on the left, -1 if on the right, 0 if on the line
     int side(PT p) { return sign(cross(v, p) - c); }
@@ -143,8 +143,8 @@ double dist_from_point_to_line(PT a, PT b, PT c) {
 // returns true if  point p is on line segment ab
 bool is_point_on_seg(PT a, PT b, PT p) {
     if (fabs(cross(p - b, a - b)) < eps) {
-        if (p.x < min(a.x, b.x) || p.x > max(a.x, b.x)) return false;
-        if (p.y < min(a.y, b.y) || p.y > max(a.y, b.y)) return false;
+        if (p.x < min(a.x, b.x) - eps || p.x > max(a.x, b.x) + eps) return false;
+        if (p.y < min(a.y, b.y) - eps || p.y > max(a.y, b.y) + eps) return false;
         return true;
     }
     return false;

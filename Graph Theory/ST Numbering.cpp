@@ -17,7 +17,7 @@ vector<int> g[N];
 int low[N], dis[N], T = 0, par[N], sign[N];
 vector<int> preorder;
 
-bool dfs1(int u, int pre = -1) { // check if there is any articulation point
+bool dfs1(int u, int pre = -1) { // check if there is no articulation point
   low[u] = dis[u] = ++T;
   int child = 0;
   for(int v : g[u]) if(v != pre) {
@@ -53,7 +53,7 @@ vector<int> st_numbering(int n, int s, int t) {
   T = 0;
   preorder.clear();
   for(int i = 1; i <= n; i++) dis[i] = low[i] = -1, sign[i] = 0;
-  if(!dfs1(t)) return vector<int>(); // no bipolar orientation
+  if(!dfs1(t)) return vector<int>(); // no bipolar orientation if it is not 2-vertex connected after adding the s-t edge
   for(int i = 1; i <= n; i++) if(dis[i] == -1) return vector<int>(); // no bipolar orientation
   for(int i = 1; i <= n; i++) dis[i] = low[i] = -1, sign[i] = 0;
   T = 0;
@@ -92,3 +92,4 @@ int32_t main() {
   cout << endl;
   return 0;
 }
+// one problem: https://codeforces.com/contest/1916/problem/F

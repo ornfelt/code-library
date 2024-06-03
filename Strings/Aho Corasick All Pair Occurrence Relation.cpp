@@ -4,6 +4,7 @@ using namespace std;
 const int N = 755, L = 1e7 + 9;
 bool reach[N][N];
 struct AhoCorasick {
+  // caution: change 2 to 26 for normal strings
   int link[L], sz, to[L][2], dp[L][2], term[L], last[L]; // each string contains 'a' and 'b'
   AhoCorasick() {
     memset(link, 0, sizeof link);
@@ -28,6 +29,7 @@ struct AhoCorasick {
     while (!q.empty()) {
       int u = q.front();
       q.pop();
+      // caution: change 2 to 26 for normal strings
       for (int c = 0; c < 2; c++) {
         int v = to[u][c];
         if (!v) continue;
